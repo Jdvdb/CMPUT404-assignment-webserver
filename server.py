@@ -150,7 +150,7 @@ class MyWebServer(socketserver.BaseRequestHandler):
         elif file_type == 'css':
             return response + b' text/css\r\n'
         else:
-            return response + b' text/plain\r\n'
+            return response + b' application/octet-stream\r\n'
 
 
 if __name__ == "__main__":
