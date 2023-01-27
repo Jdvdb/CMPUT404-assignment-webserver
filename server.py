@@ -6,7 +6,21 @@ import calendar
 
 # http response format: https://developer.mozilla.org/en-US/docs/Web/HTTP/Messages
 
-# Copyright 2013 Abram Hindle, Eddie Antonio Santos
+# Copyright 2023 Jordan Van Den Bruel.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+# Foundation of server.py based on copyright 2013 Abram Hindle, Eddie Antonio Santos
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -99,8 +113,8 @@ class MyWebServer(socketserver.BaseRequestHandler):
         if len(request_info) != 3:
             return b'HTTP/1.1 400 Bad Request\r\n'
         if request_info[0] != 'GET':
-            if request_info[0] == 'POST' or request_info[0] == 'DELETE' or request_info[0] == 'PUT':
-                return b'HTTP/1.1 405 Method Not Allowed\r\n'
+            # assume anything besides 'GET' is a possible method that we can't handle
+            return b'HTTP/1.1 405 Method Not Allowed\r\n'
         if request_info[2] != 'HTTP/1.1':
             return b'HTTP/1.1 400 Bad Request\r\n'
 
@@ -121,7 +135,7 @@ class MyWebServer(socketserver.BaseRequestHandler):
 
     # create header with date
     def __date_header(self):
-        # https://pynative.com/python-get-the-day-of-week/#h-get-the-weekday-name-from-date-using-calendar-module
+        # calendar formatting from Victor Hule, 'Python Get the Day of the Week', 2022
         date = time.gmtime(time.time())
         formatted_date = "{}, {} {} {} {}:{}:{} GMT".format(
             calendar.day_name[date.tm_wday][0:3], date.tm_mday, calendar.month_name[date.tm_mon][0:3], date.tm_year, date.tm_hour, date.tm_min, date.tm_sec)

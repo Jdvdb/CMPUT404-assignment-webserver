@@ -24,11 +24,18 @@ compatible) http://docs.python.org/2/library/socketserver.html
 
 ========================
 
+The code in 'server.py' was written by Jordan Van Den Bruel (2023).
+
+The images 'root.png' and 'deep.png' were also created and added by
+Jordan Van Den Bruel (2023).
+
+========================
+
 The website PYnative.com was referenced when searching for a way to
 print the current day of the week as a string. Vishal Hule
 wrote the article.
 
-https://pynative.com/python-get-the-day-of-week/#h-get-the-weekday-name-from-date-using-calendar-module
+Victor Hule, 'Python Get the Day of the Week', 2022 https://pynative.com/python-get-the-day-of-week/#h-get-the-weekday-name-from-date-using-calendar-module
 
 ========================
 
